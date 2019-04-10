@@ -10,3 +10,8 @@ SELECT CONCAT(
   -- ' ',
   -- UNIX_TIMESTAMP()
   );
+
+USE employees;
+SELECT CONCAT(first_name, " ", last_name) AS first_name FROM employees;
+
+SELECT DATEDIFF(CURDATE(), '2019-03-10');
