@@ -10,4 +10,4 @@ SELECT name FROM albums WHERE release_date BETWEEN 1990 AND 1999;
 SELECT 'Which albums had less than 20 million certified sales.' AS 'Caption 5';
 SELECT name FROM albums WHERE sales < 20;
 SELECT 'All the albums with a genre of "Rock".' AS 'Caption 6';
-SELECT name FROM albums WHERE genre = 'Rock';
+SELECT name FROM albums WHERE genre = 'rock';

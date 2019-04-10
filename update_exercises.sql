@@ -1,4 +1,5 @@
 SELECT 'All albums in table' AS 'Caption 1';
+USE codeup_test_db;
 SELECT * FROM albums;
 UPDATE albums SET sales = sales * 10;
 SELECT * FROM albums;
