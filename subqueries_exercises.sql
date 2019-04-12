@@ -1,8 +1,11 @@
 USE employees;
 -- Problem 1
+-- NOTE: Can use = instead of IN for faster processing,
+-- but only when you expect to return one result
+-- from your subquery
 SELECT *
 FROM employees
-WHERE hire_date IN (
+WHERE hire_date = (
   SELECT hire_date
   FROM employees
   WHERE emp_no = 101010
@@ -18,7 +21,7 @@ WHERE hire_date IN (
 #   WHERE e.first_name IN ('Aamod'))
 # GROUP BY t.title;
 
-SELECT title
+SELECT DISTINCT title
 FROM titles
 WHERE emp_no IN (
   SELECT emp_no
@@ -26,8 +29,8 @@ WHERE emp_no IN (
   WHERE first_name IN (
     SELECT first_name
     FROM employees
-    WHERE first_name IN ('Aamod')))
-GROUP BY (title);
+    WHERE first_name IN ('Aamod')));
+-- GROUP BY (title);  -- same results as DISTINCT
 
 
 -- Problem 3
@@ -88,12 +91,16 @@ WHERE dept_no IN (
 
 SELECT first_name, last_name
 FROM employees
-WHERE emp_no IN (
-  SELECT emp_no
-  FROM salaries
-  WHERE salary IN (
-    (SELECT MAX(salary)
-     FROM salaries)
-  )
+WHERE emp_no = (
+  #   SELECT emp_no
+  #   FROM salaries
+  #   WHERE salary = (
+  #     (SELECT MAX(salary)
+  #      FROM salaries)
+  #
+  #   )
+    (select emp_no from salaries
+    order by salary desc limit 1)
 );
 
+--  (select emp_no from salaries order by salary desc limit 1);
