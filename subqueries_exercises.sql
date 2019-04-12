@@ -39,3 +39,14 @@ AND e.emp_no IN (
 AND dm.to_date LIKE '9999-01-01'
 ORDER BY d.dept_name;
 
+SELECT e.first_name, e.last_name
+FROM employees AS e
+JOIN salaries s on e.emp_no = s.emp_no
+WHERE s.salary IN (
+  SELECT MAX(salary)
+  FROM salaries);
+
+-- SELECT MAX(salary)
+-- FROM salaries;
+
+
