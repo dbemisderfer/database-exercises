@@ -9,39 +9,74 @@ WHERE hire_date IN (
 );
 
 -- Problem 2
-SELECT t.title
-FROM employees AS e
-       JOIN titles t on e.emp_no = t.emp_no
-WHERE first_name IN (
-  SELECT first_name
+# SELECT t.title
+# FROM employees AS e
+#        JOIN titles t on e.emp_no = t.emp_no
+# WHERE first_name IN (
+#   SELECT first_name
+#   FROM employees
+#   WHERE e.first_name IN ('Aamod'))
+# GROUP BY t.title;
+
+SELECT title
+FROM titles
+WHERE emp_no IN (
+  SELECT emp_no
   FROM employees
-  WHERE e.first_name IN ('Aamod'))
-GROUP BY t.title;
+  WHERE first_name IN (
+    SELECT first_name
+    FROM employees
+    WHERE first_name IN ('Aamod')))
+GROUP BY (title);
 
 
 -- Problem 3
+# SELECT first_name, last_name
+# FROM employees AS e
+#        JOIN dept_manager dm on e.emp_no = dm.emp_no
+# WHERE gender = 'F'
+#   AND e.emp_no IN (
+#   SELECT e.emp_no
+#   FROM dept_manager
+# )
+#   AND dm.to_date LIKE '9999-01-01';
+
 SELECT first_name, last_name
-FROM employees AS e
-       JOIN dept_manager dm on e.emp_no = dm.emp_no
+FROM employees
 WHERE gender = 'F'
-  AND e.emp_no IN (
-  SELECT e.emp_no
+  AND emp_no IN (
+  SELECT emp_no
   FROM dept_manager
-)
-  AND dm.to_date LIKE '9999-01-01';
+  WHERE to_date > CURDATE());
 
 -- Bonus 1
-SELECT d.dept_name
-FROM employees as e
-       JOIN dept_manager dm on e.emp_no = dm.emp_no
-       JOIN departments d on dm.dept_no = d.dept_no
-WHERE gender = 'F'
-  AND e.emp_no IN (
-  SELECT e.emp_no
+# SELECT d.dept_name
+# FROM employees as e
+#        JOIN dept_manager dm on e.emp_no = dm.emp_no
+#        JOIN departments d on dm.dept_no = d.dept_no
+# WHERE gender = 'F'
+#   AND e.emp_no IN (
+#   SELECT e.emp_no
+#   FROM dept_manager
+# )
+#   AND dm.to_date LIKE '9999-01-01'
+# ORDER BY d.dept_name;
+
+SELECT dept_name
+FROM departments
+WHERE dept_no IN (
+  SELECT dept_no
   FROM dept_manager
-)
-  AND dm.to_date LIKE '9999-01-01'
-ORDER BY d.dept_name;
+  WHERE emp_no IN (
+    SELECT emp_no
+    FROM employees
+    WHERE gender = 'F'
+      AND emp_no IN (
+      SELECT emp_no
+      FROM dept_manager
+      WHERE to_date > CURDATE())));
+
+
 
 -- Bonus 2
 # SELECT e.first_name, e.last_name
