@@ -27,6 +27,7 @@ FROM titles AS t
        JOIN departments AS d
             ON d.dept_no = de.dept_no
 WHERE t.to_date LIKE '9999-01-01'
+AND de.to_date LIKE '9999-01-01'
 AND d.dept_name = 'Customer Service'
 GROUP BY Title
 ORDER BY Title;
