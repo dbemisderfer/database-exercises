@@ -1,4 +1,5 @@
 USE employees;
+show create table dept_manager;
 -- Problem 1
 -- NOTE: Can use = instead of IN for faster processing,
 -- but only when you expect to return one result
