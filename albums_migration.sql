@@ -11,5 +11,9 @@ CREATE TABLE IF NOT EXISTS albums (
   release_date INT,
   sales DECIMAL(9,5),
   genre VARCHAR(64),
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  -- UNIQUE (artist, name)
 );
+
+-- ALTER TABLE albums  -- better to add to table creation (as seen above) than to do this step
+-- ADD UNIQUE (artist, name);

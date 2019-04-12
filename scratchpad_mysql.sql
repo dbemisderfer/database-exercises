@@ -5,8 +5,8 @@ SELECT CONCAT(
          );
 
 SELECT CONCAT(
-  'Number of seconds I''ve been alive: ',
-  UNIX_TIMESTAMP() - UNIX_TIMESTAMP('1970-08-29')
+  'Number of years I''ve been alive: ',
+  (UNIX_TIMESTAMP() - UNIX_TIMESTAMP('1970-08-29')) / (60 * 60 * 24 * 365)
   -- ' ',
   -- UNIX_TIMESTAMP()
   );
@@ -56,3 +56,9 @@ SELECT first_name, COUNT(first_name)
 FROM employees
 WHERE first_name NOT LIKE '%a%'
 GROUP BY first_name;
+
+SELECT hire_date, COUNT(*) AS number_hired
+FROM employees
+GROUP BY hire_date
+ORDER BY number_hired DESC
+LIMIT 10;
