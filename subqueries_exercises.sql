@@ -6,7 +6,15 @@ WHERE hire_date IN (
   WHERE emp_no = 101010
   );
 
--- SELECT * FROM employees
+SELECT t.title
+FROM employees AS e
+JOIN titles t on e.emp_no = t.emp_no
+WHERE first_name IN (
+  SELECT first_name
+    FROM employees
+      WHERE e.first_name IN ('Aamod'))
+GROUP BY t.title;
+
 
 
 SELECT first_name, last_name
