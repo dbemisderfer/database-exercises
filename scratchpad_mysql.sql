@@ -70,21 +70,21 @@ show create table ads;
 SELECT email
 FROM users
 JOIN ads ON ads.user_id = users.id
-WHERE ads.name LIKE '%bike%';
+WHERE ads.title LIKE '%bike%';
 
 SELECT categories.name
 FROM categories
 JOIN cat_ad ON categories.id = cat_ad.cat_id
 JOIN ads ON cat_ad.ad_id = ads.id
-WHERE ads.name LIKE '%truck%';
+WHERE ads.title LIKE '%truck%';
 
-SELECT *
+SELECT categories.name AS 'Category', title AS 'Title', descr AS 'Description', price AS 'Price'
 FROM ads
 JOIN cat_ad ON ads.id = cat_ad.ad_id
 JOIN categories ON cat_ad.cat_id = categories.id
 WHERE categories.name = 'Personal';
 
-SELECT *
+SELECT title AS 'Title', descr AS 'Descripton', price AS 'Price'
 FROM ads
 JOIN users ON ads.user_id = users.id
 WHERE users.name LIKE 'Mindy';

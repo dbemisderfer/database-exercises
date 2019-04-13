@@ -10,11 +10,10 @@ CREATE TABLE users
   PRIMARY KEY (id)
 );
 
-DROP TABLE ads;
 CREATE TABLE ads
 (
   id      INT UNSIGNED   NOT NULL AUTO_INCREMENT,
-  name    VARCHAR(100)   NOT NULL,
+  title    VARCHAR(100)   NOT NULL,
   descr   VARCHAR(100)   NOT NULL,
   price   DECIMAL(10, 2) NULL,
   user_id INT UNSIGNED   NULL,
@@ -36,6 +35,3 @@ CREATE TABLE cat_ad
   FOREIGN KEY (cat_id) REFERENCES categories (id),
   FOREIGN KEY (ad_id) REFERENCES ads (id)
 );
-
--- DO THIS ONLY AFTER INPUTTING TABLE DATA!!!!
-ALTER TABLE ads ADD FOREIGN KEY (user_id) REFERENCES users (id);
