@@ -12,7 +12,7 @@ SELECT CONCAT(
   );
 
 USE employees;
-SELECT CONCAT(first_name, " ", last_name) AS first_name FROM employees;
+SELECT CONCAT(first_name, ' ', last_name) AS first_name FROM employees;
 
 SELECT DATEDIFF(CURDATE(), '2019-03-10');
 
@@ -78,14 +78,16 @@ JOIN cat_ad ON categories.id = cat_ad.cat_id
 JOIN ads ON cat_ad.ad_id = ads.id
 WHERE ads.title LIKE '%truck%';
 
-SELECT categories.name AS 'Category', title AS 'Title', descr AS 'Description', price AS 'Price'
+SELECT categories.name AS 'Category', title AS 'Title', description AS 'Description'
 FROM ads
 JOIN cat_ad ON ads.id = cat_ad.ad_id
 JOIN categories ON cat_ad.cat_id = categories.id
 WHERE categories.name = 'Personal';
 
-SELECT title AS 'Title', descr AS 'Descripton', price AS 'Price'
+SELECT title AS 'Title', description AS 'Descripton'
 FROM ads
 JOIN users ON ads.user_id = users.id
-WHERE users.name LIKE 'Mindy';
+WHERE users.username LIKE 'Mindy';
+
+select * from ads;
 

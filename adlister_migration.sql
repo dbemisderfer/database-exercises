@@ -4,21 +4,22 @@ USE adlister_db;
 CREATE TABLE users
 (
   id       INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  name     VARCHAR(100) NOT NULL,
+  username     VARCHAR(100) NOT NULL,
   email    VARCHAR(100) NOT NULL,
   password VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  UNIQUE KEY unique_username (username),
+  UNIQUE KEY unique_email (email)
 );
 
 CREATE TABLE ads
 (
   id      INT UNSIGNED   NOT NULL AUTO_INCREMENT,
   title    VARCHAR(100)   NOT NULL,
-  descr   VARCHAR(100)   NOT NULL,
-  price   DECIMAL(10, 2) NULL,
+  description   VARCHAR(100)   NOT NULL,
   user_id INT UNSIGNED   NULL,
-  PRIMARY KEY (id)
-  --  FOREIGN KEY (user_id) REFERENCES users (id)
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
 CREATE TABLE categories
