@@ -1,11 +1,12 @@
 USE adlister_db;
 
+
 INSERT INTO users (username, email, password)
 VALUES ('Dwight', 'dwight@codeup.com', 'pass'),
        ('Arash', 'arash@codeup.com', 'pass'),
        ('Mindy', 'mindy@codeup.com', 'macaroni');
 
-
+# TRUNCATE ads;
 INSERT INTO ads (title, description, user_id)
 VALUES ('Bike For Sale', '10-speed bike in good condition', (SELECT id FROM users WHERE email = 'dwight@codeup.com')),
        ('F-150 Truck For Sale', 'Vehicle in decent shape. Good A/C.', 2),

@@ -1,12 +1,17 @@
-CREATE DATABASE IF NOT EXISTS adlister_db;
+# CREATE DATABASE IF NOT EXISTS adlister_db;
 USE adlister_db;
+
+# DROP TABLE IF EXISTS ads;
+# DROP TABLE IF EXISTS users;
+# DROP TABLE IF EXISTS categories;
+# DROP TABLE IF EXISTS cat_ad;
 
 CREATE TABLE users
 (
   id       INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  username     VARCHAR(100) NOT NULL,
-  email    VARCHAR(100) NOT NULL,
-  password VARCHAR(100) NOT NULL,
+  username     VARCHAR(255) NOT NULL,
+  email    VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY unique_username (username),
   UNIQUE KEY unique_email (email)
@@ -15,11 +20,11 @@ CREATE TABLE users
 CREATE TABLE ads
 (
   id      INT UNSIGNED   NOT NULL AUTO_INCREMENT,
-  title    VARCHAR(100)   NOT NULL,
-  description   VARCHAR(100)   NOT NULL,
+  title    VARCHAR(255)   NOT NULL,
+  description   TEXT   NOT NULL,
   user_id INT UNSIGNED   NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users (id)
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
 CREATE TABLE categories
