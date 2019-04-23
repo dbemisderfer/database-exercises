@@ -1,10 +1,11 @@
-# CREATE DATABASE IF NOT EXISTS adlister_db;
+CREATE DATABASE IF NOT EXISTS adlister_db;
 USE adlister_db;
 
-# DROP TABLE IF EXISTS ads;
-# DROP TABLE IF EXISTS users;
-# DROP TABLE IF EXISTS categories;
-# DROP TABLE IF EXISTS cat_ad;
+DROP TABLE IF EXISTS cat_ad;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS ads;
+DROP TABLE IF EXISTS users;  # need to drop tables in reverse order!!!
+
 
 CREATE TABLE users
 (

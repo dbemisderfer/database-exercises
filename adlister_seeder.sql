@@ -25,6 +25,3 @@ VALUES ('Personal'),
 
 INSERT INTO cat_ad(ad_id, cat_id)
 VALUES (1, 3), (2, 3), (2, 4), (3, 2), (3, 3), (4, 1), (5, 5), (6, 1);
-
--- DO THIS ONLY AFTER INPUTTING TABLE DATA!!!!
--- ALTER TABLE ads ADD FOREIGN KEY (user_id) REFERENCES users (id);
